@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        ".vscode": true,
+        "**/docker-linkedin-easy-apply": true
+    }
+}

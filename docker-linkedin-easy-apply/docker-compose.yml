@@ -1,0 +1,25 @@
+version: '1'
+
+services:
+  easy-apply:
+    build: 
+      context: .
+    shm_size: 2G
+
+    environment:
+      - VNC_RESOLUTION=1280x720
+      - VNC_PASSWORD=mypassword
+      - DISPLAY=host.docker.internal:0.0
+      - LIBGL_ALWAYS_INDIRECT=0
+      - GAZEBO_IP=127.0.0.1
+      # - SHM-SIZE="2G"
+      # - DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+    command: tail -F anything
+    working_dir: /root/LinkedIn-Easy-Apply-Bot
+
+    ports:
+      - "5901:5901"
+    deploy:
+      resources:
+        limits:
+          memory: 4G

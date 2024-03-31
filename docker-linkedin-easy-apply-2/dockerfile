@@ -1,0 +1,23 @@
+FROM ubuntu:noble
+
+# ENTRYPOINT ["/bin/bash"]
+# ADD LinkedIn-Easy-Apply-Bot /root/LinkedIn-Easy-Apply-Bot
+# WORKDIR /root/LinkedIn-Easy-Apply-Bot
+RUN apt -y update
+RUN apt -y install python3
+RUN apt -y install python3-pip
+RUN apt -y install python3-venv
+RUN python3 -m venv env
+
+RUN apt -y install xauth
+RUN apt -y install python3-tk python3-dev
+RUN touch ~/.Xauthority
+
+RUN apt -y install wget
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt -y install ./google-chrome-stable_current_amd64.deb -y
+
+ADD ./LinkedIn-Easy-Apply-Bot/requirements.txt /root/requirements.txt
+# Activate the virtual environment and install the package
+RUN /bin/bash -c "source env/bin/activate && pip3 install python-xlib"
+RUN /bin/bash -c "source env/bin/activate && pip3 install -r /root/requirements.txt && pip install webdriver-manager"

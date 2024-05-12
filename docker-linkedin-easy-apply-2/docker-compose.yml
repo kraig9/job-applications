@@ -19,7 +19,8 @@ services:
     working_dir: /root/LinkedIn-Easy-Apply-Bot
 
     volumes:
-      - C:/Users/User/Documents/repos/docker-linkedin-easy-apply-2/LinkedIn-Easy-Apply-Bot:/root/LinkedIn-Easy-Apply-Bot
+      - C:\Users\User\Documents\repos\job-applications\docker-linkedin-easy-apply-2\LinkedIn-Easy-Apply-Bot:/root/LinkedIn-Easy-Apply-Bot
+      - C:\Users\User\Documents\repos\job-applications\workday-apply\workday-application-automation:/root/workday-application-automation
 
     ports:
       - "5901:5901"
